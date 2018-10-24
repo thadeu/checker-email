@@ -1,6 +1,6 @@
 {
   "name": "@thadeu/checker-email",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Email Checker is a email verification tool.",
   "main": "index.js",
   "dependencies": {
