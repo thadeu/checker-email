@@ -233,11 +233,11 @@ function beginSMTPQueries(params){
 
     let endReasonSMTP = ''
 
-    if (success && params.mx_found && params.smtp_ok){
+    if (success && params.mx_found){
       endReasonSMTP = 'acceptedEmail'
     }else if(success && !params.mx_found) {
       endReasonSMTP = 'noMxRecords'
-    }else if(params.mx_found && !params.smtp_ok) {
+    }else if(!success && params.mx_found) {
       endReasonSMTP = 'failedReceivedEmail'
     }
 
