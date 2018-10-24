@@ -239,6 +239,8 @@ function beginSMTPQueries(params){
       endReasonSMTP = 'noMxRecords'
     }else if(params.mx_found && !params.smtp_ok) {
       endReasonSMTP = 'failedReceivedEmail'
+    }else {
+      endReasonSMTP = 'failedReceivedEmail'
     }
 
     let isDisposableEmail = () => disposable.findEmail(params.email)
