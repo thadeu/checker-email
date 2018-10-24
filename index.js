@@ -231,7 +231,16 @@ function beginSMTPQueries(params){
   socket.once('end', function() {
     logger.info("Closing connection")
 
-    let endReasonSMTP = success && params.mx_found ? 'acceptedEmail' : 'noMxRecords'
+    let endReasonSMTP = ''
+
+    if (success && params.mx_found && params.smtp_ok){
+      endReasonSMTP = 'acceptedEmail'
+    }else if(success && !params.mx_found) {
+      endReasonSMTP = 'noMxRecords'
+    }else if(params.mx_found && !params.smtp_ok) {
+      endReasonSMTP = 'failedReceivedEmail'
+    }
+
     let isDisposableEmail = () => disposable.findEmail(params.email)
     let assuranceQuality = params.assuranceQuality || responseObject.assuranceQuality
 
@@ -347,6 +356,8 @@ const reasons = code => {
 			return 'invalid_email'
 		case infoCodes.acceptedEmail:
 			return 'accepted_email'
+		case infoCodes.failedReceivedEmail:
+			return 'failed_received_email'
 	}
 }
 
