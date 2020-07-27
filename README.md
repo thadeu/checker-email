@@ -21,6 +21,51 @@ If you're using Yarn (and you should):
 yarn add @thadeu/checker-email
 ```
 
+### How to use?
+
+```
+import { verify } from '@thadeu/checker-email';
+```
+
+```js
+verify(your_email, (err, data) => {})
+```
+
+## Expected data
+
+### reason
+type: `unknown|invalid_email|invalid_domain|timeout|unavailable_smtp|invalid_mx_record|invalid_email|accepted_email|failed_received_email`
+
+### smtp_ok 
+type: `true|false`
+
+### role
+type: `true|false`
+
+### mx_found
+type: `true|false`
+
+### mx_records
+type: `true|false`
+
+### smtp_ok
+type: `true|false`
+
+### result
+type: `undeliverable|deliverable|risky|unknown`
+
+### disposable
+checks if the email belongs to the trusted list
+type: `true|false`
+
+### assurance_quality
+score email quality
+type: `float`
+
+### valid_format
+checks if email have a valid format
+type: `true|false`
+
 ## Do you developer?
 
 **watching tests**
