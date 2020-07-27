@@ -24,11 +24,11 @@ yarn add @thadeu/checker-email
 ### How to use?
 
 ```
-import { verify } from '@thadeu/checker-email';
+import * as CheckerEmail from '@thadeu/checker-email';
 ```
 
 ```js
-verify(your_email, (err, data) => {})
+CheckerEmail.verify(your_email, (err, data) => {})
 ```
 
 ## Expected data
